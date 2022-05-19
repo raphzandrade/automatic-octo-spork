@@ -1,5 +1,6 @@
-export interface Generic<T> {
+export interface Generic<T, Y> {
     item: T
+    otherItem: Y
 }
 
 // Generic<number> 

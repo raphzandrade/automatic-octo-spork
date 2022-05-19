@@ -1,0 +1,29 @@
+<form [formGroup]="myForm" (submit)="onSubmit()">
+    <!-- ID -->
+    <span>Id:</span>
+    <input  formControlName="id"><br>
+    <span *ngIf="this.myForm.get('id')?.getError('required')d">
+        Esse campo é obrigatório <br>
+    </span>
+
+    <span *ngIf="this.myForm.get('id')?.getError('pattern')">
+        Erro de pattern (não é um number)  <br>
+    </span>
+
+
+    <span *ngIf="this.myForm.get('id')?.getError('invalidId')">
+        O ID já existe
+    </span>
+
+    <br>
+
+    <!-- NAME -->
+    <span>Name:</span>
+    <input type="text" formControlName="name"><br>
+
+    <!-- DESCRIPTION -->
+    <span>Description:</span>
+    <input type="text" formControlName="description"><br>
+
+    <button type="submit" [disabled]="myForm.invalid">Cadastrar</button>
+</form>

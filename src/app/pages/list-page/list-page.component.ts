@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { ItemList } from '../../interfaces';
 import { switchMap} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class ListPageComponent implements OnInit {
 
   public myList: ItemList[] = [];
 
-  constructor(private itemService: ItemsService) {
+  constructor(private itemService: ItemsService, 
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,9 +32,6 @@ export class ListPageComponent implements OnInit {
   }
 
   public onCreate(): void {
-    const mockItem = new ItemList(5, 'randomName');
-
-    this.itemService.createItem(mockItem).subscribe(value => 
-      this.myList.push(value));
+    this.router.navigateByUrl("/cadastrar-item");
   }
 }

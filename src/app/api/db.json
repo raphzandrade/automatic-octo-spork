@@ -2,15 +2,18 @@
   "items": [
     {
       "id": 1,
-      "name": "nome-3"
+      "name": "nome-3",
+      "description": "mockDescription"
     },
     {
       "id": 2,
-      "name": "nome-3"
+      "name": "nome-3",
+      "description": "mockDescription"
     },
     {
       "id": 3,
-      "name": "nome-3"
+      "name": "nome-3",
+      "description": "mockDescription"
     }
   ]
 }
