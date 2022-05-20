@@ -4,6 +4,7 @@ import { ListPageComponent } from './list-page/list-page.component';
 import { ComponentsModule } from '../components/components.module';
 import { FormPageComponent } from './form-page/form-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ComponentsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    DirectivesModule
+  ],
 })
 export class PagesModule { }

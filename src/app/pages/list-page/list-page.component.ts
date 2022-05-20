@@ -13,6 +13,10 @@ import { Router } from '@angular/router';
 export class ListPageComponent implements OnInit {
 
   public myList: ItemList[] = [];
+  public numberList: number[] = [1,2,3,4,5,6];
+  public showDiv: boolean = false;
+  public messageValue: string = 'option1';
+  public showClass2: boolean = false;
 
   constructor(private itemService: ItemsService, 
     private router: Router) {
@@ -21,6 +25,18 @@ export class ListPageComponent implements OnInit {
   ngOnInit(): void {
     this.itemService.getItems().subscribe(result =>
       this.myList = result);
+  }
+
+  public toggleDiv(): void {
+    this.showDiv = true;
+  }
+  
+  public toggleMessageValue(): void {
+    this.messageValue = 'option2';
+  }
+
+  public toggleClass(): void {
+    this.showClass2 = true;
   }
 
   public onDelete(id: number): void {
