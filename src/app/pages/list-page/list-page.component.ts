@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items/items.service';
 import { ItemList } from '../../interfaces';
-import { switchMap} from 'rxjs/operators';
+import { switchMap, takeUntil} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,33 +11,31 @@ import { Router } from '@angular/router';
   templateUrl: './list-page.component.html',
   styleUrls: ['./list-page.component.scss']
 })
-export class ListPageComponent implements OnInit {
+export class ListPageComponent implements OnInit, OnDestroy {
 
   public myList: ItemList[] = [];
-  public numberList: number[] = [1,2,3,4,5,6];
-  public showDiv: boolean = false;
-  public messageValue: string = 'option1';
-  public showClass2: boolean = false;
+  public cancelSubscriptions: Subject<void> = new Subject();
 
-  constructor(private itemService: ItemsService, 
-    private router: Router) {
-  }
+  constructor(
+    private itemService: ItemsService, 
+    private router: Router) {}
 
   ngOnInit(): void {
-    this.itemService.getItems().subscribe(result =>
+    this.getItems();
+  }
+
+  ngOnDestroy(): void {
+    this.cancelSubscriptions.next();
+    this.cancelSubscriptions.complete();
+  }
+
+  public getItems(): void {
+    this.cancelSubscriptions.next();
+
+    this.itemService.getItems()
+    .pipe(takeUntil(this.cancelSubscriptions))
+    .subscribe(result =>
       this.myList = result);
-  }
-
-  public toggleDiv(): void {
-    this.showDiv = true;
-  }
-  
-  public toggleMessageValue(): void {
-    this.messageValue = 'option2';
-  }
-
-  public toggleClass(): void {
-    this.showClass2 = true;
   }
 
   public onDelete(id: number): void {

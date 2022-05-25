@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http'
 
@@ -14,7 +14,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {​​​​​​​​​provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'}​​​​​​​​​
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
