@@ -1,9 +1,10 @@
 import { DEFAULT_CURRENCY_CODE, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],
   providers: [
-    {​​​​​​​​​provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'}​​​​​​​​​
+    {​​​​​​​​​provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},​​​​​​​​​
   ],
   bootstrap: [AppComponent]
 })

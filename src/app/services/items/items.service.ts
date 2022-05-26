@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ItemList } from 'src/app/interfaces';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 
 
@@ -12,13 +13,22 @@ import { environment } from 'src/environments/environment';
 })
 export class ItemsService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient, 
+    private authService: AuthService) { }
 
   public getItems(): Observable<ItemList[]> {
-  
-    const url = `${environment.apiUrl}/items`;
+    const url = `${environment.apiUrl}/660/items`;
 
-    const recipe = this.httpClient.get<ItemList[]>(url);
+    const token: string = this.authService.getUserAccessToken();
+
+    // const myHeaders: HttpHeaders = new HttpHeaders({
+    //   "Authorization": `Bearer ${token}`
+    // });
+
+    const recipe = this.httpClient.get<ItemList[]>(url, {
+      // headers: myHeaders
+    });
 
     return recipe;
   }
@@ -32,7 +42,7 @@ export class ItemsService {
   }
 
   public createItem(item: ItemList): Observable<ItemList> {
-    const url = `${environment.apiUrl}/items`;
+    const url = `${environment.apiUrl}/660/items`;
 
     const recipe = this.httpClient.post<ItemList>(url, item);
 

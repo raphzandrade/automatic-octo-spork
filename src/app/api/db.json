@@ -1,10 +1,22 @@
 {
-  "items": [
+  "users": [
     {
-      "id": 2,
-      "name": "nome-3",
-      "description": "mockDescription"
+      "email": "user@email.com",
+      "password": "$2a$10$Vz5Uw.Xry//DAeR.BZ9iiOOJPD1zMAnop1/tOcpEyXSbKmD4U9HZ.",
+      "id": 1
     },
+    {
+      "email": "outro-user@mail.com",
+      "password": "$2a$10$DaAN1mcIW.h6YPnuEhgup.Z4aOBD9zkkPpBWSg7ebcl1evcmx9dAi",
+      "id": 2
+    },
+    {
+      "email": "user3@mail.com",
+      "password": "$2a$10$N4X4Vh6MtbiZcRd4HVVNV.rMFUCgGSmGv0Iot.OLm1/BQZY24eseK",
+      "id": 3
+    }
+  ],
+  "items": [
     {
       "id": 3,
       "name": "nome-3",
@@ -14,6 +26,21 @@
       "id": "23",
       "name": "teste",
       "description": "teste"
+    },
+    {
+      "id": "234",
+      "name": "novo item",
+      "description": ""
+    },
+    {
+      "id": "02398452",
+      "name": "teste",
+      "description": ""
+    },
+    {
+      "id": "57",
+      "name": "novo item com interceptor",
+      "description": ""
     }
   ],
   "texts": [

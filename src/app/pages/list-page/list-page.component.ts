@@ -4,6 +4,7 @@ import { ItemList } from '../../interfaces';
 import { switchMap, takeUntil} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ListPageComponent implements OnInit, OnDestroy {
   public cancelSubscriptions: Subject<void> = new Subject();
 
   constructor(
-    private itemService: ItemsService, 
+    private itemService: ItemsService,
+    private authService: AuthService, 
     private router: Router) {}
 
   ngOnInit(): void {
@@ -48,5 +50,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
 
   public onCreate(): void {
     this.router.navigateByUrl("/cadastrar-item");
+  }
+
+  public onLogout(): void {
+    this.authService.logout();
   }
 }

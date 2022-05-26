@@ -8,6 +8,7 @@ import { DirectivesModule } from '../directives/directives.module';
 import { PipesPageComponent } from './pipes-page/pipes-page.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ListPageAsyncComponent } from './list-page-async/list-page-async.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
@@ -15,13 +16,15 @@ import { ListPageAsyncComponent } from './list-page-async/list-page-async.compon
     ListPageComponent,
     FormPageComponent,
     PipesPageComponent,
-    ListPageAsyncComponent
+    ListPageAsyncComponent,
+    LoginPageComponent
   ],
   exports: [
     ListPageComponent,
     FormPageComponent,
     PipesPageComponent,
-    ListPageAsyncComponent
+    ListPageAsyncComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
